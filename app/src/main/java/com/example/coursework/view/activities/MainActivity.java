@@ -1,0 +1,76 @@
+package com.example.coursework.view.activities;
+
+import android.net.Uri;
+import android.os.Bundle;
+
+import com.example.coursework.R;
+import com.example.coursework.view.fragments.CurrentFragment;
+import com.example.coursework.view.fragments.ForecastFragment;
+import com.example.coursework.view.fragments.OtherFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.view.MenuItem;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements CurrentFragment.OnFragmentInteractionListener {
+
+    private ActionBar toolbar;
+    private TextView mTextMessage;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_activity);
+
+        toolbar = getSupportActionBar();
+
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    toolbar.setTitle("Weather Forecast");
+                    fragment = new ForecastFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_dashboard:
+                    toolbar.setTitle("Current Weather");
+                    fragment = new CurrentFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_notifications:
+                    toolbar.setTitle("Other fragment");
+                    fragment = new OtherFragment();
+                    loadFragment(fragment);
+                    return true;
+            }
+            return false;
+        }
+    };
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+}
