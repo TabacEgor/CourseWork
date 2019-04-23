@@ -4,9 +4,9 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.coursework.R;
-import com.example.coursework.view.fragments.CurrentFragment;
-import com.example.coursework.view.fragments.ForecastFragment;
-import com.example.coursework.view.fragments.OtherFragment;
+import com.example.coursework.view.fragments.CurrentWeatherFragment;
+import com.example.coursework.view.fragments.ForecastWeatherFragment;
+import com.example.coursework.view.fragments.MyStationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
@@ -18,10 +18,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements CurrentFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements CurrentWeatherFragment.OnFragmentInteractionListener {
 
     private ActionBar toolbar;
-    private TextView mTextMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements CurrentFragment.O
         toolbar = getSupportActionBar();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
@@ -44,17 +42,17 @@ public class MainActivity extends AppCompatActivity implements CurrentFragment.O
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     toolbar.setTitle("Weather Forecast");
-                    fragment = new ForecastFragment();
+                    fragment = new ForecastWeatherFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_dashboard:
                     toolbar.setTitle("Current Weather");
-                    fragment = new CurrentFragment();
+                    fragment = new CurrentWeatherFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
                     toolbar.setTitle("Other fragment");
-                    fragment = new OtherFragment();
+                    fragment = new MyStationFragment();
                     loadFragment(fragment);
                     return true;
             }
