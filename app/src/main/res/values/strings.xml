@@ -17,4 +17,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tempreture">tempreture</string>
+    <string name="pressure">pressure</string>
+    <string name="description">description</string>
+    <string name="wind_speed">wind speed</string>
 </resources>

@@ -5,14 +5,21 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.coursework.R;
+import com.example.coursework.model.Weather;
 import com.example.coursework.presenter.ForecastPresenter;
 import com.example.coursework.presenter.contract.IContractForecast;
+import com.example.coursework.view.adapters.ForecastAdapter;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +32,10 @@ import com.example.coursework.presenter.contract.IContractForecast;
 public class ForecastWeatherFragment extends Fragment implements IContractForecast.View {
 
     private IContractForecast.Presenter forecastWeatherPresenter;
+    private RecyclerView recyclerView;
+    private ForecastAdapter forecastAdapter;
+
+    List<Weather> weatherList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +49,6 @@ public class ForecastWeatherFragment extends Fragment implements IContractForeca
     private OnFragmentInteractionListener mListener;
 
     public ForecastWeatherFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -72,6 +82,14 @@ public class ForecastWeatherFragment extends Fragment implements IContractForeca
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        recyclerView = (RecyclerView) container.findViewById(R.id.rvForecast);
+
+        forecastAdapter = new ForecastAdapter(weatherList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(forecastAdapter);
+
         return inflater.inflate(R.layout.fragment_forecast, container, false);
     }
 
@@ -85,12 +103,6 @@ public class ForecastWeatherFragment extends Fragment implements IContractForeca
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
     }
 
     @Override
