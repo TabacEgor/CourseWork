@@ -6,10 +6,10 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient {
 
-    private static RetrofitClient retrofitInstance = null;
-    Retrofit retrofit;
+    private static RetrofitClient retrofitInstance;
+    private Retrofit retrofit;
 
-    private final static String BASE_URL = "https://samples.openweathermap.org";
+    private static final String BASE_URL = "https://samples.openweathermap.org";
 
     private RetrofitClient() {
         retrofit = new Retrofit.Builder()
@@ -24,5 +24,9 @@ public class RetrofitClient {
             retrofitInstance = new RetrofitClient();
         }
         return retrofitInstance;
+    }
+
+    public ApiInterface createJsonApi() {
+        return retrofit.create(ApiInterface.class);
     }
 }

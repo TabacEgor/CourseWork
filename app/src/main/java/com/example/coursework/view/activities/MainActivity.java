@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements CurrentWeatherFra
 
     private ActionBar toolbar;
 
+    public static final String apiKey = "f58e30f345a853399f0b521eba4a4747";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements CurrentWeatherFra
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
-                    toolbar.setTitle("Other fragment");
+                    toolbar.setTitle("Weather Stations");
                     fragment = new MyStationFragment();
                     loadFragment(fragment);
                     return true;
