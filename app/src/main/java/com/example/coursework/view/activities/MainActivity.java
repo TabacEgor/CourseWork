@@ -43,17 +43,17 @@ public class MainActivity extends AppCompatActivity implements CurrentWeatherFra
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    toolbar.setTitle("Weather Forecast");
+                    toolbar.setTitle("WeatherForecast Forecast");
                     fragment = new ForecastWeatherFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_dashboard:
-                    toolbar.setTitle("Current Weather");
+                    toolbar.setTitle("Current WeatherForecast");
                     fragment = new CurrentWeatherFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
-                    toolbar.setTitle("Weather Stations");
+                    toolbar.setTitle("WeatherForecast Stations");
                     fragment = new MyStationFragment();
                     loadFragment(fragment);
                     return true;

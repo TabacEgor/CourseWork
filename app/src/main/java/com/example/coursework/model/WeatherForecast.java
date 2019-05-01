@@ -2,7 +2,7 @@ package com.example.coursework.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Weather {
+public class WeatherForecast {
 
     @SerializedName("temp")
     private String tempreture;
@@ -18,6 +18,14 @@ public class Weather {
 
     @SerializedName("icon")
     private String icon;
+
+    public WeatherForecast(String tempreture, String pressure, String description, String wind, String icon) {
+        this.tempreture = tempreture;
+        this.pressure = pressure;
+        this.description = description;
+        this.wind = wind;
+        this.icon = icon;
+    }
 
     public String getTempreture() {
         return tempreture;

@@ -1,18 +1,30 @@
 package com.example.coursework.view.fragments;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.coursework.BuildConfig;
 import com.example.coursework.R;
+import com.example.coursework.model.WeatherCurrent;
 import com.example.coursework.presenter.CurrentPresenter;
 import com.example.coursework.presenter.contract.IContractCurrent;
+import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,8 +38,12 @@ import com.example.coursework.presenter.contract.IContractCurrent;
 public class CurrentWeatherFragment extends Fragment implements IContractCurrent.View {
 
     private IContractCurrent.Presenter currentWeatherPresenter;
-
     private OnFragmentInteractionListener mListener;
+
+    private EditText etCity;
+    private Button getButton;
+    private TextView tvTempreture, tvPressure, tvHumidity, tvDesctiption, tvUpdateTime, tvSunset, tvSunrise;
+    private ImageView ivIcon;
 
     public CurrentWeatherFragment() {
     }
@@ -51,15 +67,38 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        currentWeatherPresenter = new CurrentPresenter(this);
-        currentWeatherPresenter.getCurrentWeather();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_current, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_current, container, false);
+
+        etCity = (EditText) view.findViewById(R.id.etCityName);
+        getButton = (Button) view.findViewById(R.id.btnGet);
+        tvTempreture = (TextView) view.findViewById(R.id.tvTempreture);
+        tvPressure = (TextView) view.findViewById(R.id.tvPressure);
+        tvHumidity = (TextView) view.findViewById(R.id.tvHumidity);
+        tvDesctiption = (TextView) view.findViewById(R.id.tvDescription);
+        tvUpdateTime = (TextView) view.findViewById(R.id.tvUpdateTime);
+        tvSunset = (TextView) view.findViewById(R.id.tvSunset);
+        tvSunrise = (TextView) view.findViewById(R.id.tvSunrise);
+
+        ivIcon = (ImageView) view.findViewById(R.id.ivIcon);
+
+        if (BuildConfig.DEBUG) {
+            etCity.setText("London");
+        }
+
+        currentWeatherPresenter = new CurrentPresenter(this);
+
+        getButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentWeatherPresenter.getCurrentWeather(etCity.getText().toString());
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,9 +114,20 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
         mListener = null;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void displayCurrentWeather() {
+    public void displayCurrentWeather(WeatherCurrent weatherCurrent) {
+        tvTempreture.setText("Tempreture: " + weatherCurrent.getTempreture() + "°C");
+        tvPressure.setText("Pressure: " + weatherCurrent.getPressure() + " hPa");
+        tvHumidity.setText("Humidity: " + weatherCurrent.getHumidity() + "%");
+        tvDesctiption.setText(weatherCurrent.getDescription());
 
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        tvUpdateTime.setText("Update time: " + simpleDateFormat.format(weatherCurrent.getUpdateTime()*1000));
+        tvSunset.setText("Sunset: " + simpleDateFormat.format(weatherCurrent.getSunset()*1000));
+        tvSunrise.setText("Sunrise: " + simpleDateFormat.format(weatherCurrent.getSunrise()*1000));
+
+        Picasso.get().load("http://openweathermap.org/img/w/" + weatherCurrent.getWeatherIcon() + ".png").into(ivIcon);
     }
 
     /**

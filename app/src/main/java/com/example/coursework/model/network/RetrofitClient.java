@@ -9,7 +9,7 @@ public class RetrofitClient {
     private static RetrofitClient retrofitInstance;
     private Retrofit retrofit;
 
-    private static final String BASE_URL = "https://samples.openweathermap.org";
+    private static final String BASE_URL = "https://api.openweathermap.org";
 
     private RetrofitClient() {
         retrofit = new Retrofit.Builder()

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursework.R;
-import com.example.coursework.model.Weather;
+import com.example.coursework.model.WeatherForecast;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,10 +18,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHolder> {
 
-    private List<Weather> weatherList;
+    private List<WeatherForecast> weatherForecastList;
 
-    public ForecastAdapter(List<Weather> weatherList) {
-        this.weatherList = weatherList;
+    public ForecastAdapter(List<WeatherForecast> weatherForecastList) {
+        this.weatherForecastList = weatherForecastList;
     }
 
     @NonNull
@@ -34,20 +34,20 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Weather weather = weatherList.get(position);
+        WeatherForecast weatherForecast = weatherForecastList.get(position);
 
-        holder.tvTempreture.setText(weather.getTempreture());
-        holder.tvPressure.setText(weather.getPressure());
-        holder.tvDescription.setText(weather.getDescription());
-        holder.tvWind.setText(weather.getWind());
+        holder.tvTempreture.setText(weatherForecast.getTempreture());
+        holder.tvPressure.setText(weatherForecast.getPressure());
+        holder.tvDescription.setText(weatherForecast.getDescription());
+        holder.tvWind.setText(weatherForecast.getWind());
 
-        Picasso.get().load("http://openweathermap.org/img/w/" + weather.getIcon() + ".png")
+        Picasso.get().load("http://openweathermap.org/img/w/" + weatherForecast.getIcon() + ".png")
                 .into(holder.circleImageView);
     }
 
     @Override
     public int getItemCount() {
-        return weatherList.size();
+        return weatherForecastList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
