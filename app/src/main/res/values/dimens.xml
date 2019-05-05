@@ -5,4 +5,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="row_padding_vertical">10dp</dimen>
     <dimen name="paddingLinear">8dp</dimen>
+    <dimen name="paddingStandart">16dp</dimen>
+    <dimen name="paddingStandartx2">32dp</dimen>
+    <dimen name="paddingStandartdiv2">8dp</dimen>
+    <dimen name="navbottombarsize">56dp</dimen>
 </resources>

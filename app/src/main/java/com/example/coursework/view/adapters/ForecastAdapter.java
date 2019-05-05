@@ -1,5 +1,6 @@
 package com.example.coursework.view.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +33,16 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
         return new ViewHolder(itemView);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WeatherForecast weatherForecast = weatherForecastList.get(position);
 
-        holder.tvTempreture.setText(weatherForecast.getTempreture());
-        holder.tvPressure.setText(weatherForecast.getPressure());
+        holder.tvTempreture.setText(weatherForecast.getTempreture() + "°C");
+        holder.tvPressure.setText(weatherForecast.getPressure() + " hPa");
         holder.tvDescription.setText(weatherForecast.getDescription());
-        holder.tvWind.setText(weatherForecast.getWind());
+        holder.tvWind.setText(weatherForecast.getWind() + " m⁄s");
+        holder.tvDate.setText(weatherForecast.getDate());
 
         Picasso.get().load("http://openweathermap.org/img/w/" + weatherForecast.getIcon() + ".png")
                 .into(holder.circleImageView);
@@ -52,7 +55,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvTempreture, tvPressure, tvDescription, tvWind;
+        TextView tvTempreture, tvPressure, tvDescription, tvWind, tvDate;
         CircleImageView circleImageView;
 
         ViewHolder(@NonNull View itemView) {
@@ -62,6 +65,8 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
             tvPressure = (TextView) itemView.findViewById(R.id.tvPressure);
             tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
             tvWind = (TextView) itemView.findViewById(R.id.tvWind);
+            tvDate = (TextView) itemView.findViewById(R.id.tvDate);
+
         }
     }
 }

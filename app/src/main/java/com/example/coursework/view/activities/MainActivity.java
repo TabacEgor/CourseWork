@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements CurrentWeatherFra
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navView.setSelectedItemId(R.id.navigation_home); // change to whichever id should be default
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -43,17 +44,17 @@ public class MainActivity extends AppCompatActivity implements CurrentWeatherFra
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    toolbar.setTitle("WeatherForecast Forecast");
+                    toolbar.setTitle("Weather Forecast Chisinau");
                     fragment = new ForecastWeatherFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_dashboard:
-                    toolbar.setTitle("Current WeatherForecast");
+                    toolbar.setTitle("Current Weather");
                     fragment = new CurrentWeatherFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
-                    toolbar.setTitle("WeatherForecast Stations");
+                    toolbar.setTitle("Weather Stations");
                     fragment = new MyStationFragment();
                     loadFragment(fragment);
                     return true;

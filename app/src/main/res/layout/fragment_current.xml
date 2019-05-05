@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="true"
+    android:background="@drawable/currentbackground"
+
     tools:context=".view.fragments.CurrentWeatherFragment">
 
 
@@ -26,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="casual"
                 android:hint="@string/city_name"
                 android:inputType="textPersonName" />
 
@@ -42,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/tempreture"
-            android:textSize="26sp"
+            android:textSize="23sp"
+            style="@style/MyForecastStyle"
             android:padding="@dimen/paddingLinear"/>
 
         <TextView
@@ -51,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/pressure"
-            android:textSize="26sp"
+            android:textSize="23sp"
+            style="@style/MyForecastStyle"
             android:padding="@dimen/paddingLinear"/>
 
         <TextView
@@ -60,7 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/humidity"
-            android:textSize="26sp"
+            android:textSize="23sp"
+            style="@style/MyForecastStyle"
             android:padding="@dimen/paddingLinear"/>
 
         <TextView
@@ -69,7 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/description"
-            android:textSize="26sp"
+            android:textSize="23sp"
+            style="@style/MyForecastStyle"
             android:padding="@dimen/paddingLinear"/>
 
         <TextView
@@ -78,7 +85,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/update_time"
-            android:textSize="26sp"
+            android:textSize="23sp"
+            style="@style/MyForecastStyle"
             android:padding="@dimen/paddingLinear"/>
 
         <ImageView
@@ -95,7 +103,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/sunset"
-            android:textSize="26sp"
+            android:textSize="23sp"
+            style="@style/MyForecastStyle"
             android:padding="@dimen/paddingLinear"/>
 
         <TextView
@@ -104,7 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/sunrise"
-            android:textSize="26sp" />
+            style="@style/MyForecastStyle"
+            android:textSize="23sp"/>
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

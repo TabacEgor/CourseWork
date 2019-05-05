@@ -67,6 +67,7 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentWeatherPresenter = new CurrentPresenter(this);
     }
 
     @SuppressLint("SetTextI18n")
@@ -87,10 +88,9 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
         ivIcon = (ImageView) view.findViewById(R.id.ivIcon);
 
         if (BuildConfig.DEBUG) {
-            etCity.setText("London");
+            etCity.setText("Chisinau");
         }
 
-        currentWeatherPresenter = new CurrentPresenter(this);
 
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override

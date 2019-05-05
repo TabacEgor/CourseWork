@@ -1,5 +1,9 @@
 package com.example.coursework.presenter.contract;
 
+import com.example.coursework.model.WeatherForecast;
+
+import java.util.List;
+
 public interface IContractForecast {
 
     interface Presenter {
@@ -9,6 +13,6 @@ public interface IContractForecast {
 
     interface View {
 
-        void displayForecast();
+        void displayForecast(List<WeatherForecast> forecastList);
     }
 }

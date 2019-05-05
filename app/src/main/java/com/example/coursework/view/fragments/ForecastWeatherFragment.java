@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -12,9 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.coursework.R;
+import com.example.coursework.model.WeatherForecast;
 import com.example.coursework.presenter.ForecastPresenter;
 import com.example.coursework.presenter.contract.IContractForecast;
 import com.example.coursework.view.adapters.ForecastAdapter;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,21 +62,16 @@ public class ForecastWeatherFragment extends Fragment implements IContractForeca
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         forecastWeatherPresenter = new ForecastPresenter(this);
+        forecastWeatherPresenter.getForecastWeather();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        recyclerView = (RecyclerView) container.findViewById(R.id.rvForecast);
+        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rvForecast);
 
-//        forecastAdapter = new ForecastAdapter(weatherList);
-//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-//        recyclerView.setLayoutManager(mLayoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//        recyclerView.setAdapter(forecastAdapter);
-
-        return inflater.inflate(R.layout.fragment_forecast, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -93,8 +93,12 @@ public class ForecastWeatherFragment extends Fragment implements IContractForeca
     }
 
     @Override
-    public void displayForecast() {
-
+    public void displayForecast(List<WeatherForecast> forecastList) {
+        forecastAdapter = new ForecastAdapter(forecastList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(forecastAdapter);
     }
 
     /**

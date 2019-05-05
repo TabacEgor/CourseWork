@@ -2,62 +2,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/colorForecastItem">
+    android:layout_marginStart="@dimen/paddingStandart"
+    android:layout_marginEnd="@dimen/paddingStandart"
+    android:layout_marginTop="@dimen/paddingStandartdiv2"
+    android:layout_marginBottom="@dimen/paddingStandartdiv2"
+    android:background="@drawable/forecast_item_background"
+    android:theme="@style/MyForecastStyle">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="@dimen/paddingStandart"
+        android:layout_marginLeft="@dimen/paddingStandart"
+        android:layout_marginTop="32dp" />
 
     <TextView
         android:id="@+id/tvTempreture"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="parent"
         android:layout_marginStart="100dp"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="100dp"
-        android:text="@string/tempreture"
-        android:textSize="26sp" />
-
-    <TextView
-        android:id="@+id/tvPressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTempreture"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="100dp"
-        android:text="@string/pressure"
-        android:textSize="26sp"
-        android:layout_marginLeft="100dp" />
+        android:text="@string/tempreture" />
 
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_toEndOf="@+id/tvTempreture"
-        android:layout_toRightOf="@+id/tvTempreture"
-        android:text="@string/description"
-        android:textSize="26sp" />
+        android:layout_below="@id/tvTempreture"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="@dimen/paddingStandart"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:text="@string/description" />
 
     <TextView
-        android:id="@+id/tvWind"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvPressure"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDescription"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_toEndOf="@+id/tvTempreture"
-        android:layout_toRightOf="@+id/tvTempreture"
-        android:text="@string/wind_speed"
-        android:textSize="26sp" />
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:text="@string/pressure" />
+
+    <TextView
+        android:id="@+id/tvWind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPressure"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="@dimen/paddingStandart"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:text="@string/wind_speed" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvWind"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:layout_marginBottom="16dp" />
+
 </RelativeLayout>

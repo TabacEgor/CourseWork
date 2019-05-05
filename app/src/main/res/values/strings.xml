@@ -30,4 +30,7 @@
     <string name="sunrise">sunrise</string>
     <string name="sunset">sunset</string>
     <string name="clounds">clounds</string>
+    <string name="forecast">Forecast</string>
+    <string name="current">Current</string>
+    <string name="stations">Stations</string>
 </resources>
