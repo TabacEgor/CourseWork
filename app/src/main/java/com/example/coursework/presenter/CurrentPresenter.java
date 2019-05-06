@@ -46,15 +46,16 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonWeather = jsonArray.getJSONObject(i);
                             }
-                            weatherCurrent = new WeatherCurrent();
-                            weatherCurrent.setTempreture((jsonObject.getJSONObject("main").get("temp").toString()));
-                            weatherCurrent.setPressure(jsonObject.getJSONObject("main").get("pressure").toString());
-                            weatherCurrent.setHumidity(jsonObject.getJSONObject("main").get("humidity").toString());
-                            weatherCurrent.setDescription(jsonWeather.getString("description"));
-                            weatherCurrent.setUpdateTime(jsonObject.getLong("dt"));
-                            weatherCurrent.setWeatherIcon(jsonWeather.getString("icon"));
-                            weatherCurrent.setSunset(jsonObject.getJSONObject("sys").getLong("sunset"));
-                            weatherCurrent.setSunrise(jsonObject.getJSONObject("sys").getLong("sunrise"));
+                            WeatherCurrent weatherCurrent = new WeatherCurrent.Builder()
+                                    .withTempreture((jsonObject.getJSONObject("main").get("temp").toString()))
+                                    .withPressure(jsonObject.getJSONObject("main").get("pressure").toString())
+                                    .withHumidity(jsonObject.getJSONObject("main").get("humidity").toString())
+                                    .withDescription(jsonWeather.getString("description"))
+                                    .withUpdateTime(jsonObject.getLong("dt"))
+                                    .withWeatherIcon(jsonWeather.getString("icon"))
+                                    .withSunset(jsonObject.getJSONObject("sys").getLong("sunset"))
+                                    .withSunrise(jsonObject.getJSONObject("sys").getLong("sunrise"))
+                                    .build();
                             currentWeatherView.displayCurrentWeather(weatherCurrent);
                         } catch (IOException | JSONException e) {
                             e.printStackTrace();

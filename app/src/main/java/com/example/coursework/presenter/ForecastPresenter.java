@@ -45,12 +45,14 @@ public class ForecastPresenter implements IContractForecast.Presenter {
                             JSONArray listJson = jsonObject.getJSONArray("list");
                             for (int i = 0; i < listJson.length(); i++) {
                                 JSONObject oneObject = listJson.getJSONObject(i);
-                                WeatherForecast weatherForecast = new WeatherForecast(oneObject.get("dt_txt").toString()
-                                        ,oneObject.getJSONObject("main").get("temp").toString()
-                                        ,oneObject.getJSONObject("main").get("pressure").toString()
-                                        ,oneObject.getJSONArray("weather").getJSONObject(0).get("description").toString()
-                                        ,oneObject.getJSONObject("wind").get("speed").toString()
-                                        ,oneObject.getJSONArray("weather").getJSONObject(0).get("icon").toString());
+                                WeatherForecast weatherForecast = new WeatherForecast.Builder()
+                                        .withTempreture(oneObject.getJSONObject("main").get("temp").toString())
+                                        .withDate(oneObject.get("dt_txt").toString())
+                                        .withPressure(oneObject.getJSONObject("main").get("pressure").toString())
+                                        .withDescription(oneObject.getJSONArray("weather").getJSONObject(0).get("description").toString())
+                                        .withWindSpeed(oneObject.getJSONObject("wind").get("speed").toString())
+                                        .withWeatherIcon(oneObject.getJSONArray("weather").getJSONObject(0).get("icon").toString())
+                                        .build();
                                 forecastList.add(weatherForecast);
                                 forecastWeatherView.displayForecast(forecastList);
                             }
