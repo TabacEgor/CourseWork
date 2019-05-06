@@ -6,4 +6,5 @@
     <color name="colorForecastItem">#81d4fa</color>
     <color name="black">#000000</color>
     <color name="forecast_item">#BDBDBD</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -33,4 +33,7 @@
     <string name="forecast">Forecast</string>
     <string name="current">Current</string>
     <string name="stations">Stations</string>
+    <string name="title_activity_my_stations">MyStationsActivity</string>
+    <string name="tab_text_1">Registration</string>
+    <string name="tab_text_2">Send data</string>
 </resources>

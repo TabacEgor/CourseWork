@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.coursework">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,10 +14,12 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".view.activities.MyStationsActivity"
+            android:label="@string/title_activity_my_stations"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".view.activities.MainActivity"
-            android:label="@string/login">
-
-        </activity>
+            android:label="@string/login"></activity>
         <activity android:name=".view.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

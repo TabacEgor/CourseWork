@@ -1,5 +1,6 @@
 package com.example.coursework.view.activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -54,9 +55,10 @@ public class MainActivity extends AppCompatActivity implements CurrentWeatherFra
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
-                    toolbar.setTitle("Weather Stations");
-                    fragment = new MyStationFragment();
-                    loadFragment(fragment);
+                    Intent myStationsIntent = new Intent(getApplicationContext(), MyStationsActivity.class);
+                    startActivity(myStationsIntent);
+//                    fragment = new MyStationFragment();
+//                    loadFragment(fragment);
                     return true;
             }
             return false;
