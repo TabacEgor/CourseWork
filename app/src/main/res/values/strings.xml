@@ -36,4 +36,16 @@
     <string name="title_activity_my_stations">MyStationsActivity</string>
     <string name="tab_text_1">Registration</string>
     <string name="tab_text_2">Send data</string>
+    <string name="external_id">External Id</string>
+    <string name="name_station">Name Station</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="altitude">Altitude</string>
+    <string name="registrate_station">Registrate Station</string>
+    <string name="station_id">station_id</string>
+    <string name="wind_gust">wind gust</string>
+    <string name="rain_per_hour">rain per hour</string>
+    <string name="condition">condition</string>
+    <string name="send_data">Send data</string>
+    <string name="my_weather_station">My Weather Station</string>
 </resources>

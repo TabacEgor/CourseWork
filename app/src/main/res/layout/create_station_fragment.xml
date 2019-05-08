@@ -7,10 +7,57 @@
     android:background="@drawable/stationsbackground"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
-        android:id="@+id/textView"
+
+    <EditText
+        android:id="@+id/etExternalId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="36sp"
-        android:text="CREATE STATION" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:hint="@string/external_id" />
+
+    <EditText
+        android:id="@+id/etNameStation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:inputType="textPersonName"
+        android:hint="@string/name_station" />
+
+    <EditText
+        android:id="@+id/etLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:hint="@string/latitude" />
+
+    <EditText
+        android:id="@+id/etLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:hint="@string/longitude" />
+
+    <EditText
+        android:id="@+id/etAltitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:hint="@string/altitude" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/paddingStandart"
+        android:background="@drawable/btn_style"
+        android:text="@string/registrate_station" />
 </LinearLayout>

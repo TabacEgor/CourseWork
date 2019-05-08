@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -7,11 +7,98 @@
     android:background="@drawable/stationsbackground"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
-    <TextView
-        android:id="@+id/textView2"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/etStationId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SEND DATA"
-        android:layout_gravity="center"
-        android:textSize="36sp" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/station_id" />
+
+    <EditText
+        android:id="@+id/etTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/tempreture" />
+
+    <EditText
+        android:id="@+id/etWind_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/wind_speed" />
+
+    <EditText
+        android:id="@+id/etWind_gust"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/wind_gust" />
+
+    <EditText
+        android:id="@+id/etPressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/pressure" />
+
+    <EditText
+        android:id="@+id/etHumidity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/humidity" />
+
+    <EditText
+        android:id="@+id/etRain_1h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/rain_per_hour" />
+
+    <EditText
+        android:id="@+id/etClouds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/clounds" />
+
+    <EditText
+        android:id="@+id/etCondition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:hint="@string/condition" />
+
+    <Button
+        android:id="@+id/btnSendData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_style"
+        android:layout_marginTop="@dimen/standartPaddingdiv4"
+        android:text="@string/send_data" />
 </LinearLayout>
+</ScrollView>

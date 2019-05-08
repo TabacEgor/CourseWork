@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.coursework.R;
-import com.example.coursework.view.fragments.MyStationFragment;
+import com.example.coursework.view.fragments.CreateStationFragment;
 import com.example.coursework.view.fragments.SendDataFragment;
 
 /**
@@ -33,7 +33,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a StationsWeatherFragment (defined as a static inner class below).
         switch (position) {
             case 0:
-                return MyStationFragment.newInstance(position);
+                return CreateStationFragment.newInstance(position);
             case 1:
                 return SendDataFragment.newInstance(position);
         }
