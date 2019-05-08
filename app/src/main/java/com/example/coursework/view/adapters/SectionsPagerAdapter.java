@@ -1,4 +1,4 @@
-package com.example.coursework.view.activities.ui.main;
+package com.example.coursework.view.adapters;
 
 import android.content.Context;
 
@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.coursework.R;
+import com.example.coursework.view.fragments.MyStationFragment;
+import com.example.coursework.view.fragments.SendDataFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -28,7 +30,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
-        // Return a MyStationFragment (defined as a static inner class below).
+        // Return a StationsWeatherFragment (defined as a static inner class below).
         switch (position) {
             case 0:
                 return MyStationFragment.newInstance(position);

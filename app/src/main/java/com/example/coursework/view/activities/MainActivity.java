@@ -7,7 +7,6 @@ import android.os.Bundle;
 import com.example.coursework.R;
 import com.example.coursework.view.fragments.CurrentWeatherFragment;
 import com.example.coursework.view.fragments.ForecastWeatherFragment;
-import com.example.coursework.view.fragments.MyStationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
@@ -17,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements CurrentWeatherFragment.OnFragmentInteractionListener {
 
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements CurrentWeatherFra
                 case R.id.navigation_notifications:
                     Intent myStationsIntent = new Intent(getApplicationContext(), MyStationsActivity.class);
                     startActivity(myStationsIntent);
-//                    fragment = new MyStationFragment();
+//                    fragment = new StationsWeatherFragment();
 //                    loadFragment(fragment);
                     return true;
             }
