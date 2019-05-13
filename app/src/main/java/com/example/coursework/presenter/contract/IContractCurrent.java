@@ -10,7 +10,7 @@ public interface IContractCurrent {
 
         void getCurrentWeather(String cityName);
 
-        void getLastWeather();
+        void getLastWeather() throws CloneNotSupportedException;
     }
 
     interface View {

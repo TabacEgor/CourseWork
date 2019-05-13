@@ -28,6 +28,8 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
     WeatherCurrent copyCurrent;
     private JSONObject jsonWeather;
 
+    WeatherCurrent weatherCurrent;
+
     public CurrentPresenter(IContractCurrent.View currentWeatherView) {
         this.currentWeatherView = currentWeatherView;
     }
@@ -46,7 +48,7 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonWeather = jsonArray.getJSONObject(i);
                             }
-                            WeatherCurrent weatherCurrent = new WeatherCurrent.Builder()
+                            weatherCurrent = new WeatherCurrent.Builder()
                                     .withTempreture((jsonObject.getJSONObject("main").get("temp").toString()))
                                     .withPressure(jsonObject.getJSONObject("main").get("pressure").toString())
                                     .withHumidity(jsonObject.getJSONObject("main").get("humidity").toString())
@@ -56,9 +58,8 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
                                     .withSunset(jsonObject.getJSONObject("sys").getLong("sunset"))
                                     .withSunrise(jsonObject.getJSONObject("sys").getLong("sunrise"))
                                     .build();
-                            copyCurrent = new WeatherCurrent();
-                            copyCurrent = weatherCurrent.clone();
-                            currentWeatherView.displayCurrentWeather(copyCurrent);
+                            saveState();
+                            currentWeatherView.displayCurrentWeather(weatherCurrent);
                         } catch (IOException | JSONException | CloneNotSupportedException e) {
                             e.printStackTrace();
                         }
@@ -72,9 +73,17 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
     }
 
     @Override
-    public void getLastWeather() {
-        if (copyCurrent != null)
-            currentWeatherView.dipsplayLastWeather(copyCurrent);
+    public void getLastWeather() throws CloneNotSupportedException {
+        if (copyCurrent != null) {
+            WeatherCurrent copyWeather = saveState();
+            currentWeatherView.dipsplayLastWeather(copyWeather);
+        }
+
     }
 
+    private WeatherCurrent saveState() throws CloneNotSupportedException {
+        copyCurrent = new WeatherCurrent();
+        copyCurrent = weatherCurrent.clone();
+        return copyCurrent;
+    }
 }

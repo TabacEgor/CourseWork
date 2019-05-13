@@ -96,7 +96,11 @@ public class  CurrentWeatherFragment extends Fragment implements IContractCurren
         btnLastWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentWeatherPresenter.getLastWeather();
+                try {
+                    currentWeatherPresenter.getLastWeather();
+                } catch (CloneNotSupportedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
