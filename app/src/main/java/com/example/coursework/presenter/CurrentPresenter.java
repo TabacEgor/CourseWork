@@ -25,7 +25,6 @@ import retrofit2.Response;
 public class CurrentPresenter implements IContractCurrent.Presenter {
 
     private IContractCurrent.View currentWeatherView;
-    private WeatherCurrent weatherCurrent;
     WeatherCurrent copyCurrent;
     private JSONObject jsonWeather;
 
