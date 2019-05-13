@@ -2,7 +2,7 @@ package com.example.coursework.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WeatherForecast {
+public class WeatherForecast implements Cloneable {
 
     @SerializedName("dt_txt")
     private String date;
@@ -156,6 +156,12 @@ public class WeatherForecast {
 
     public String getIcon() {
         return icon;
+    }
+
+    @Override
+    public WeatherForecast clone() throws CloneNotSupportedException {
+        WeatherForecast copyForecast = (WeatherForecast) super.clone();
+        return copyForecast;
     }
 
     public static class Builder {

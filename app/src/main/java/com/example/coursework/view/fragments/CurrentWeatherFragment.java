@@ -35,13 +35,13 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 
-public class CurrentWeatherFragment extends Fragment implements IContractCurrent.View {
+public class  CurrentWeatherFragment extends Fragment implements IContractCurrent.View {
 
     private IContractCurrent.Presenter currentWeatherPresenter;
     private OnFragmentInteractionListener mListener;
 
     private EditText etCity;
-    private Button getButton;
+    private Button getButton, btnLastWeather;
     private TextView tvTempreture, tvPressure, tvHumidity, tvDesctiption, tvUpdateTime, tvSunset, tvSunrise;
     private ImageView ivIcon;
 
@@ -68,6 +68,7 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentWeatherPresenter = new CurrentPresenter(this);
+        CurrentPresenter currentPresenter = new CurrentPresenter(this);
     }
 
     @SuppressLint("SetTextI18n")
@@ -77,6 +78,7 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
 
         etCity = (EditText) view.findViewById(R.id.etCityName);
         getButton = (Button) view.findViewById(R.id.btnGet);
+        btnLastWeather = (Button) view.findViewById(R.id.btnLastWeather);
         tvTempreture = (TextView) view.findViewById(R.id.tvTempreture);
         tvPressure = (TextView) view.findViewById(R.id.tvPressure);
         tvHumidity = (TextView) view.findViewById(R.id.tvHumidity);
@@ -91,6 +93,12 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
             etCity.setText("Chisinau");
         }
 
+        btnLastWeather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentWeatherPresenter.getLastWeather();
+            }
+        });
 
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +136,22 @@ public class CurrentWeatherFragment extends Fragment implements IContractCurrent
         tvSunrise.setText("Sunrise: " + simpleDateFormat.format(weatherCurrent.getSunrise()*1000));
 
         Picasso.get().load("http://openweathermap.org/img/w/" + weatherCurrent.getWeatherIcon() + ".png").into(ivIcon);
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void dipsplayLastWeather(WeatherCurrent copyWeather) {
+        tvTempreture.setText("Tempreture: " + copyWeather.getTempreture() + "°C");
+        tvPressure.setText("Pressure: " + copyWeather.getPressure() + " hPa");
+        tvHumidity.setText("Humidity: " + copyWeather.getHumidity() + "%");
+        tvDesctiption.setText(copyWeather.getDescription());
+
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        tvUpdateTime.setText("Update time: " + simpleDateFormat.format(copyWeather.getUpdateTime()*1000));
+        tvSunset.setText("Sunset: " + simpleDateFormat.format(copyWeather.getSunset()*1000));
+        tvSunrise.setText("Sunrise: " + simpleDateFormat.format(copyWeather.getSunrise()*1000));
+
+        Picasso.get().load("http://openweathermap.org/img/w/" + copyWeather.getWeatherIcon() + ".png").into(ivIcon);
     }
 
     /**

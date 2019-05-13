@@ -26,6 +26,7 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
 
     private IContractCurrent.View currentWeatherView;
     private WeatherCurrent weatherCurrent;
+    WeatherCurrent copyCurrent;
     private JSONObject jsonWeather;
 
     public CurrentPresenter(IContractCurrent.View currentWeatherView) {
@@ -56,8 +57,10 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
                                     .withSunset(jsonObject.getJSONObject("sys").getLong("sunset"))
                                     .withSunrise(jsonObject.getJSONObject("sys").getLong("sunrise"))
                                     .build();
-                            currentWeatherView.displayCurrentWeather(weatherCurrent);
-                        } catch (IOException | JSONException e) {
+                            copyCurrent = new WeatherCurrent();
+                            copyCurrent = weatherCurrent.clone();
+                            currentWeatherView.displayCurrentWeather(copyCurrent);
+                        } catch (IOException | JSONException | CloneNotSupportedException e) {
                             e.printStackTrace();
                         }
                     }
@@ -68,4 +71,11 @@ public class CurrentPresenter implements IContractCurrent.Presenter {
                     }
                 });
     }
+
+    @Override
+    public void getLastWeather() {
+        if (copyCurrent != null)
+            currentWeatherView.dipsplayLastWeather(copyCurrent);
+    }
+
 }

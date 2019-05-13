@@ -24,6 +24,7 @@ import retrofit2.Response;
 public class ForecastPresenter implements IContractForecast.Presenter {
 
     private IContractForecast.View forecastWeatherView;
+    WeatherForecast copyForecast;
 
     private List<WeatherForecast> forecastList = new ArrayList<>();
 

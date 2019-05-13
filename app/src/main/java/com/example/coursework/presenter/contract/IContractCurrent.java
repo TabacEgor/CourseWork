@@ -9,10 +9,14 @@ public interface IContractCurrent {
     interface Presenter {
 
         void getCurrentWeather(String cityName);
+
+        void getLastWeather();
     }
 
     interface View {
 
         void displayCurrentWeather(WeatherCurrent weatherCurrent);
+
+        void dipsplayLastWeather(WeatherCurrent copyWeather);
     }
 }

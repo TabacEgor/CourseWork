@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class WeatherCurrent {
+public class WeatherCurrent implements Cloneable{
 
     @SerializedName("temp")
     private String tempreture;
@@ -151,12 +151,24 @@ public class WeatherCurrent {
         this.country = country;
     }
 
+    @Override
+    public WeatherCurrent clone() throws CloneNotSupportedException {
+        WeatherCurrent copyCurrent = (WeatherCurrent) super.clone();
+        return copyCurrent;
+    }
 
-    public static class Builder {
+
+    public static class Builder implements Cloneable {
         private WeatherCurrent weatherCurrent;
 
         public Builder() {
             weatherCurrent = new WeatherCurrent();
+        }
+
+        @Override
+        protected WeatherCurrent clone() throws CloneNotSupportedException {
+            WeatherCurrent copy = (WeatherCurrent) super.clone();
+            return copy;
         }
 
         public Builder withTempreture(String tempreture) {
